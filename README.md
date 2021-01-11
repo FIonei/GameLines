@@ -4,4 +4,4 @@ When player place ball on line of 5+ balls with same color, they destroy and giv
 The goal of the game is to score the most points.
 
 Gameplay video:
-![me](https://github.com/Fionei/GameLines/GameplayVideos/Lines1.1.gif)
+![me](https://github.com/FIonei/GameLines/tree/master/GameplayVideos/Lines1.1.gif)
