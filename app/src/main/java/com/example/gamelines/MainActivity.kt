@@ -24,6 +24,17 @@ val HOW_MANY_BALLS = 5 //minimal number of balls in line to destroy
 val NUMBER_OF_COLORS = 7 //how many colors of balls available
 
 class MainActivity : AppCompatActivity() {
+    val colors = mapOf(
+        1 to getDrawable(R.drawable.redbubble),     11 to getDrawable(R.drawable.redbubble_y),
+        2 to getDrawable(R.drawable.greenbubble),   12 to getDrawable(R.drawable.greenbubble_y),
+        3 to getDrawable(R.drawable.bluebubble),    13 to getDrawable(R.drawable.bluebubble_y),
+        4 to getDrawable(R.drawable.orangebubble),  14 to getDrawable(R.drawable.orangebubble_y),
+        5 to getDrawable(R.drawable.purplebubble),  15 to getDrawable(R.drawable.purplebubble_y),
+        6 to getDrawable(R.drawable.brownbubble),   16 to getDrawable(R.drawable.brownbubble_y),
+        7 to getDrawable(R.drawable.skybubble),     17 to getDrawable(R.drawable.skybubble_y),
+        0 to getDrawable(R.drawable.empty),
+        50 to getDrawable(R.drawable.boom),
+        100 to getDrawable(R.drawable.wrong))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +43,9 @@ class MainActivity : AppCompatActivity() {
         Block.bringToFront()
     }
     fun rotate(view: View){
-        if (requestedOrientation == SCREEN_ORIENTATION_PORTRAIT) setRequestedOrientation(SCREEN_ORIENTATION_LANDSCAPE)
+        if ((requestedOrientation != SCREEN_ORIENTATION_PORTRAIT) && (requestedOrientation != SCREEN_ORIENTATION_LANDSCAPE)) setRequestedOrientation(
+            SCREEN_ORIENTATION_PORTRAIT)
+        else if (requestedOrientation == SCREEN_ORIENTATION_PORTRAIT) setRequestedOrientation(SCREEN_ORIENTATION_LANDSCAPE)
         else setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT)
     }
 
@@ -108,8 +121,9 @@ class MainActivity : AppCompatActivity() {
             for (y in 0..TABLESIZE-1){
                 val tabRow = tableLayout.getChildAt(x) as TableRow
                 val cell = tabRow.getChildAt(y) as ImageView
-                val color = Table[x][y]
-                when(color){
+                //val color = Table[x][y]
+                cell.setImageDrawable(colors[Table[x][y]])
+                /*when(color){
                     0 -> cell.setImageDrawable(getDrawable(R.drawable.empty))
                     1 -> cell.setImageDrawable(getDrawable(R.drawable.redbubble))
                     2 -> cell.setImageDrawable(getDrawable(R.drawable.greenbubble))
@@ -118,7 +132,7 @@ class MainActivity : AppCompatActivity() {
                     5 -> cell.setImageDrawable(getDrawable(R.drawable.purplebubble))
                     6 -> cell.setImageDrawable(getDrawable(R.drawable.brownbubble))
                     7 -> cell.setImageDrawable(getDrawable(R.drawable.skybubble))
-                }
+                }*/
             }
         showPoints()
     }
@@ -150,7 +164,10 @@ class MainActivity : AppCompatActivity() {
         if (isShown()) showB() else unshowB()
     }
     fun drawRand(){
-        when(threeBalls[0]){
+        bubble1.setImageDrawable(colors[threeBalls[0]])
+        bubble2.setImageDrawable(colors[threeBalls[1]])
+        bubble3.setImageDrawable(colors[threeBalls[2]])
+        /*when(threeBalls[0]){
             1 -> bubble1.setImageDrawable(getDrawable(R.drawable.redbubble))
             2 -> bubble1.setImageDrawable(getDrawable(R.drawable.greenbubble))
             3 -> bubble1.setImageDrawable(getDrawable(R.drawable.bluebubble))
@@ -176,7 +193,7 @@ class MainActivity : AppCompatActivity() {
             5 -> bubble3.setImageDrawable(getDrawable(R.drawable.purplebubble))
             6 -> bubble3.setImageDrawable(getDrawable(R.drawable.brownbubble))
             7 -> bubble3.setImageDrawable(getDrawable(R.drawable.skybubble))
-        }
+        }*/
     }
 
     //Block of selection current ball and for his moving
@@ -232,7 +249,8 @@ class MainActivity : AppCompatActivity() {
     fun paintBall(coords: IntArray, color: Int, selected: ImageView){//changing selected ball, "selected" - new cell
         val tabRow = tableLayout.getChildAt(coords[0]) as TableRow
         val cell = tabRow.getChildAt(coords[1]) as ImageView //selected ball
-        when (color){//delete selection of a ball
+        cell.setImageDrawable(colors[color])
+        /*when (color){//delete selection of a ball
             1 -> cell.setImageDrawable(getDrawable(R.drawable.redbubble))
             2 -> cell.setImageDrawable(getDrawable(R.drawable.greenbubble))
             3 -> cell.setImageDrawable(getDrawable(R.drawable.bluebubble))
@@ -240,7 +258,7 @@ class MainActivity : AppCompatActivity() {
             5 -> cell.setImageDrawable(getDrawable(R.drawable.purplebubble))
             6 -> cell.setImageDrawable(getDrawable(R.drawable.brownbubble))
             7 -> cell.setImageDrawable(getDrawable(R.drawable.skybubble))
-        }
+        }*/
         changeColor(selected)
         yellowCell = findByIdString(selected.getTag().toString())//changing coordinates of selected ball
     }
