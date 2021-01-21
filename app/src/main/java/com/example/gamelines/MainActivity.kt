@@ -25,16 +25,26 @@ val NUMBER_OF_COLORS = 7 //how many colors of balls available
 
 class MainActivity : AppCompatActivity() {
     val colors = mapOf(
-        1 to getDrawable(R.drawable.redbubble),     11 to getDrawable(R.drawable.redbubble_y),
-        2 to getDrawable(R.drawable.greenbubble),   12 to getDrawable(R.drawable.greenbubble_y),
-        3 to getDrawable(R.drawable.bluebubble),    13 to getDrawable(R.drawable.bluebubble_y),
-        4 to getDrawable(R.drawable.orangebubble),  14 to getDrawable(R.drawable.orangebubble_y),
-        5 to getDrawable(R.drawable.purplebubble),  15 to getDrawable(R.drawable.purplebubble_y),
-        6 to getDrawable(R.drawable.brownbubble),   16 to getDrawable(R.drawable.brownbubble_y),
-        7 to getDrawable(R.drawable.skybubble),     17 to getDrawable(R.drawable.skybubble_y),
-        0 to getDrawable(R.drawable.empty),
-        50 to getDrawable(R.drawable.boom),
-        100 to getDrawable(R.drawable.wrong))
+        1 to R.drawable.redbubble,     11 to R.drawable.redbubble_y,
+        2 to R.drawable.greenbubble,   12 to R.drawable.greenbubble_y,
+        3 to R.drawable.bluebubble,    13 to R.drawable.bluebubble_y,
+        4 to R.drawable.orangebubble,  14 to R.drawable.orangebubble_y,
+        5 to R.drawable.purplebubble,  15 to R.drawable.purplebubble_y,
+        6 to R.drawable.brownbubble,   16 to R.drawable.brownbubble_y,
+        7 to R.drawable.skybubble,     17 to R.drawable.skybubble_y,
+        0 to R.drawable.empty,
+        50 to R.drawable.boom,
+        100 to R.drawable.wrong)
+
+    /*val inversedMapOfColors = mapOf(
+        getDrawable(R.drawable.redbubble)!!.constantState to 1,     getDrawable(R.drawable.redbubble_y)!!.constantState to 11,
+        getDrawable(R.drawable.greenbubble)!!.constantState to 2,   getDrawable(R.drawable.greenbubble_y)!!.constantState to 12,
+        getDrawable(R.drawable.bluebubble)!!.constantState to 3,    getDrawable(R.drawable.bluebubble_y)!!.constantState to 13,
+        getDrawable(R.drawable.orangebubble)!!.constantState to 4,  getDrawable(R.drawable.orangebubble_y)!!.constantState to 14,
+        getDrawable(R.drawable.purplebubble)!!.constantState to 5,  getDrawable(R.drawable.purplebubble_y)!!.constantState to 15,
+        getDrawable(R.drawable.brownbubble)!!.constantState to 6,   getDrawable(R.drawable.brownbubble_y)!!.constantState to 16,
+        getDrawable(R.drawable.skybubble)!!.constantState to 7,     getDrawable(R.drawable.skybubble_y)!!.constantState to 17
+    )*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -121,18 +131,7 @@ class MainActivity : AppCompatActivity() {
             for (y in 0..TABLESIZE-1){
                 val tabRow = tableLayout.getChildAt(x) as TableRow
                 val cell = tabRow.getChildAt(y) as ImageView
-                //val color = Table[x][y]
-                cell.setImageDrawable(colors[Table[x][y]])
-                /*when(color){
-                    0 -> cell.setImageDrawable(getDrawable(R.drawable.empty))
-                    1 -> cell.setImageDrawable(getDrawable(R.drawable.redbubble))
-                    2 -> cell.setImageDrawable(getDrawable(R.drawable.greenbubble))
-                    3 -> cell.setImageDrawable(getDrawable(R.drawable.bluebubble))
-                    4 -> cell.setImageDrawable(getDrawable(R.drawable.orangebubble))
-                    5 -> cell.setImageDrawable(getDrawable(R.drawable.purplebubble))
-                    6 -> cell.setImageDrawable(getDrawable(R.drawable.brownbubble))
-                    7 -> cell.setImageDrawable(getDrawable(R.drawable.skybubble))
-                }*/
+                cell.setImageDrawable(getDrawable(colors[Table[x][y]]!!))
             }
         showPoints()
     }
@@ -164,36 +163,9 @@ class MainActivity : AppCompatActivity() {
         if (isShown()) showB() else unshowB()
     }
     fun drawRand(){
-        bubble1.setImageDrawable(colors[threeBalls[0]])
-        bubble2.setImageDrawable(colors[threeBalls[1]])
-        bubble3.setImageDrawable(colors[threeBalls[2]])
-        /*when(threeBalls[0]){
-            1 -> bubble1.setImageDrawable(getDrawable(R.drawable.redbubble))
-            2 -> bubble1.setImageDrawable(getDrawable(R.drawable.greenbubble))
-            3 -> bubble1.setImageDrawable(getDrawable(R.drawable.bluebubble))
-            4 -> bubble1.setImageDrawable(getDrawable(R.drawable.orangebubble))
-            5 -> bubble1.setImageDrawable(getDrawable(R.drawable.purplebubble))
-            6 -> bubble1.setImageDrawable(getDrawable(R.drawable.brownbubble))
-            7 -> bubble1.setImageDrawable(getDrawable(R.drawable.skybubble))
-        }
-        when(threeBalls[1]){
-            1 -> bubble2.setImageDrawable(getDrawable(R.drawable.redbubble))
-            2 -> bubble2.setImageDrawable(getDrawable(R.drawable.greenbubble))
-            3 -> bubble2.setImageDrawable(getDrawable(R.drawable.bluebubble))
-            4 -> bubble2.setImageDrawable(getDrawable(R.drawable.orangebubble))
-            5 -> bubble2.setImageDrawable(getDrawable(R.drawable.purplebubble))
-            6 -> bubble2.setImageDrawable(getDrawable(R.drawable.brownbubble))
-            7 -> bubble2.setImageDrawable(getDrawable(R.drawable.skybubble))
-        }
-        when(threeBalls[2]){
-            1 -> bubble3.setImageDrawable(getDrawable(R.drawable.redbubble))
-            2 -> bubble3.setImageDrawable(getDrawable(R.drawable.greenbubble))
-            3 -> bubble3.setImageDrawable(getDrawable(R.drawable.bluebubble))
-            4 -> bubble3.setImageDrawable(getDrawable(R.drawable.orangebubble))
-            5 -> bubble3.setImageDrawable(getDrawable(R.drawable.purplebubble))
-            6 -> bubble3.setImageDrawable(getDrawable(R.drawable.brownbubble))
-            7 -> bubble3.setImageDrawable(getDrawable(R.drawable.skybubble))
-        }*/
+        bubble1.setImageDrawable(getDrawable(colors[threeBalls[0]]!!))
+        bubble2.setImageDrawable(getDrawable(colors[threeBalls[1]]!!))
+        bubble3.setImageDrawable(getDrawable(colors[threeBalls[2]]!!))
     }
 
     //Block of selection current ball and for his moving
@@ -249,16 +221,7 @@ class MainActivity : AppCompatActivity() {
     fun paintBall(coords: IntArray, color: Int, selected: ImageView){//changing selected ball, "selected" - new cell
         val tabRow = tableLayout.getChildAt(coords[0]) as TableRow
         val cell = tabRow.getChildAt(coords[1]) as ImageView //selected ball
-        cell.setImageDrawable(colors[color])
-        /*when (color){//delete selection of a ball
-            1 -> cell.setImageDrawable(getDrawable(R.drawable.redbubble))
-            2 -> cell.setImageDrawable(getDrawable(R.drawable.greenbubble))
-            3 -> cell.setImageDrawable(getDrawable(R.drawable.bluebubble))
-            4 -> cell.setImageDrawable(getDrawable(R.drawable.orangebubble))
-            5 -> cell.setImageDrawable(getDrawable(R.drawable.purplebubble))
-            6 -> cell.setImageDrawable(getDrawable(R.drawable.brownbubble))
-            7 -> cell.setImageDrawable(getDrawable(R.drawable.skybubble))
-        }*/
+        cell.setImageDrawable(getDrawable(colors[color]!!))//delete selection of a ball
         changeColor(selected)
         yellowCell = findByIdString(selected.getTag().toString())//changing coordinates of selected ball
     }
@@ -267,6 +230,9 @@ class MainActivity : AppCompatActivity() {
         isYellowBlock = true
     }
     fun dropColor(view: ImageView){
+        /*for (x in inversedMapOfColors) if (view.drawable.constantState == x.key) {
+            view.setImageDrawable(getDrawable(colors[x.value - 10]!!))
+        }*/
         when (view.drawable.constantState){
             getDrawable(R.drawable.redbubble_y)!!.constantState -> view.setImageDrawable(getDrawable(R.drawable.redbubble))
             getDrawable(R.drawable.greenbubble_y)!!.constantState -> view.setImageDrawable(getDrawable(R.drawable.greenbubble))
@@ -282,6 +248,11 @@ class MainActivity : AppCompatActivity() {
 
     //ball's selection
     fun changeColor(view: ImageView){
+        /*for (x in inversedMapOfColors) if (view.drawable.constantState == x.key) {
+            view.setImageDrawable(getDrawable(colors[x.value + 10]!!))
+            yellowType = x.value
+            break
+        }*/
         when (view.drawable.constantState) {
             getDrawable(R.drawable.redbubble)!!.constantState -> {view.setImageDrawable(getDrawable(R.drawable.redbubble_y)); yellowType = 1}
             getDrawable(R.drawable.greenbubble)!!.constantState -> {view.setImageDrawable(getDrawable(R.drawable.greenbubble_y)); yellowType = 2}
