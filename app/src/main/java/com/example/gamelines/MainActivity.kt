@@ -9,19 +9,19 @@ import android.view.View
 import android.view.View.*
 import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.*
+import com.example.gamelines.data.Table
 import kotlinx.android.synthetic.main.activity_main.HighScore
 import kotlinx.android.synthetic.main.activity_main.Score
 
-//numbers-colors: 1 - red, 2 - green, 3 - blue, 4 - orange, 5 - purple, 6 - brown, 7 - skyblue
-var ScoreSTR = "0"//current score
-var HighScoreSTR = "0"//high score
+const val NEW_BALLS = 3 //how many new balls will appear
+const val MIN_BALLS_TO_DESTROY = 5 //minimal number of balls in line to destroy
 val TABLESIZE = 9//size of game field
-var Table = Array(TABLESIZE, {Array(TABLESIZE, {0})})//table of game field
-var NEW_BALLS = 3 //how many new balls will appear
+val NUMBER_OF_COLORS = 7 //how many colors of balls available
+var scoreSTR = "0"//current score
+var highScoreSTR = "0"//high score
 var threeBalls = Array(NEW_BALLS, {0})//colors of random balls under table
 var isFutureBalls = true //does buttonShow show random balls
-val HOW_MANY_BALLS = 5 //minimal number of balls in line to destroy
-val NUMBER_OF_COLORS = 7 //how many colors of balls available
+var table: Table = Table(TABLESIZE)//table of game field
 
 class MainActivity : AppCompatActivity() {
     val colors = mapOf(
@@ -61,11 +61,11 @@ class MainActivity : AppCompatActivity() {
 
     fun startGame(view: View){
         RandomBallsCreation().randColor()
-        Points().ClearPoints()
-        ChangingGameTable().ClearTable()
+        Points().clearPoints()
+        ChangingGameTable().clearTable()
         view.visibility = GONE
         Block.visibility = GONE
-        Score.setText(ScoreSTR)
+        Score.setText(scoreSTR)
         Prize.visibility = GONE
         buttonShow.visibility = VISIBLE
         button3.visibility = VISIBLE
@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
         showTable()
         showPoints()
         var emptyCells = 0
-        for (x in 0..TABLESIZE-1) for (y in 0..TABLESIZE-1) if (Table[x][y] == 0) emptyCells++
+        for (x in 0..TABLESIZE-1) for (y in 0..TABLESIZE-1) if (table.isEquals(x,y,0)) emptyCells++
         if (emptyCells > 0) {drawRand()}
         else {
             gameOver()
@@ -108,8 +108,8 @@ class MainActivity : AppCompatActivity() {
         ButtonRestart.bringToFront()
         buttonShow.visibility = INVISIBLE
         button3.visibility = GONE
-        TotalScore.setText(ScoreSTR)
-        TotalBestScore.setText(HighScoreSTR)
+        TotalScore.setText(scoreSTR)
+        TotalBestScore.setText(highScoreSTR)
     }
     fun publish(view: View){
         Toast.makeText(applicationContext, "в разработке", Toast.LENGTH_LONG).show()
@@ -123,15 +123,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showPoints(){
-        Score.setText(ScoreSTR)
-        HighScore.setText(HighScoreSTR)
+        Score.setText(scoreSTR)
+        HighScore.setText(highScoreSTR)
     }
     fun showTable(){
         for (x in 0..TABLESIZE-1)
             for (y in 0..TABLESIZE-1){
                 val tabRow = tableLayout.getChildAt(x) as TableRow
                 val cell = tabRow.getChildAt(y) as ImageView
-                cell.setImageDrawable(getDrawable(colors[Table[x][y]]!!))
+                cell.setImageDrawable(getDrawable(colors[table.getValue(x,y)]!!))
             }
         showPoints()
     }
@@ -182,13 +182,13 @@ class MainActivity : AppCompatActivity() {
                     yellowType = 0
                     val sum = BallsDestroying().checkLines(findByIdString(image.getTag().toString()))
                     showTable()
-                    Points().AddPoints(sum)
+                    Points().addPoints(sum)
                     showPoints()
                     if (sum==0) game()
                 }
                 //for case "no way for ball"
                 else {
-                    var timer= object: CountDownTimer(300, 1000){
+                    val timer= object: CountDownTimer(300, 1000){
                         override fun onTick(p0: Long) {
                             image.setImageDrawable(getDrawable(R.drawable.wrong))
                         }
@@ -203,7 +203,7 @@ class MainActivity : AppCompatActivity() {
             else {
                 if (image.drawable.constantState != getDrawable(R.drawable.wrong)!!.constantState) {
                     val tabRow = tableLayout.getChildAt(yellowCell[0]) as TableRow
-                    val cell = tabRow.getChildAt(yellowCell[1]) as ImageView //желтая ячейка
+                    val cell = tabRow.getChildAt(yellowCell[1]) as ImageView //yellow cell
                     if (cell.getTag() == image.getTag()) dropColor(image)
                     else paintBall(yellowCell, yellowType, image)
                 }
@@ -266,52 +266,52 @@ class MainActivity : AppCompatActivity() {
 }
 
 class ChangingGameTable{
-    fun ClearTable(){
+    fun clearTable(){
         for (x in 0..TABLESIZE-1)
             for (y in 0..TABLESIZE-1)
-                Table[x][y] = 0}
+                table.setValue(x,y,0)}
     fun paintEmpty(coords: IntArray, color: Int, selected: IntArray){//moving ball into empty cell
-        Table[selected[0]][selected[1]] = color
-        Table[coords[0]][coords[1]] = 0
+        table.setValue(selected[0], selected[1], color)
+        table.setValue(coords[0], coords[1], 0)
     }
 }
 
-//Lee's algorithm
+//Lee's algorithm (Wave Trace Algorithm)
 class PathCalculation{
     fun pathAccess(yellowCoords: IntArray, coords: IntArray):Boolean{ //checking that the ball can move from the starting position to the selected empty cell
-        var table : Array<Array<Int>> = Array(TABLESIZE, {Array(TABLESIZE, {0})})
+        val pathTable = Table(TABLESIZE)
         for (x in 0..TABLESIZE-1)
             for (y in 0..TABLESIZE-1){
-                if (Table[x][y] != 0) table[x][y] = -1
+                if ((table.isEquals(x,y,0)).not()) pathTable.setValue(x,y,-1)
             }
-        table[yellowCoords[0]][yellowCoords[1]] = 1
+        pathTable.setValue(yellowCoords[0],yellowCoords[1], 1)
         var cnt = 1
-        while (table[coords[0]][coords[1]] == 0) {
-            path(table, cnt)
+        while (pathTable.isEquals(coords[0],coords[1], 0)) {
+            path(pathTable, cnt)
             cnt++
             if (cnt>=TABLESIZE*TABLESIZE) break
         }
-        if (table[coords[0]][coords[1]] != 0) return true
+        if ((pathTable.isEquals(coords[0],coords[1], 0)).not()) return true
         else return false
     }
-    fun path(table: Array<Array<Int>>, num: Int){
+    fun path(mainTable: Table, num: Int){
         var count = 0
-        for(x in 0..TABLESIZE-1) for(y in 0..TABLESIZE-1) if (table[x][y] == num) count+=2
+        for(x in 0..TABLESIZE-1) for(y in 0..TABLESIZE-1) if (mainTable.isEquals(x,y,num)) count+=2
         if (count!=1){
             val arr = IntArray(count)
             var n = 0
             for(x in 0..TABLESIZE-1)
-                for(y in 0..TABLESIZE-1) if (table[x][y] == num) {
+                for(y in 0..TABLESIZE-1) if (mainTable.isEquals(x,y,num)) {
                     arr[n] = x
                     n++
                     arr[n] = y
                     n++}
             for(i in 0..n-1 step 2) {
                 val x = arr[i]; val y = arr[i+1]
-                if (x-1>=0) if (table[x-1][y] == 0) table[x-1][y] = num+1
-                if (y-1>=0) if (table[x][y-1] == 0) table[x][y-1] = num+1
-                if (x+1<=TABLESIZE-1) if (table[x+1][y] == 0) table[x+1][y] = num+1
-                if (y+1<=TABLESIZE-1) if (table[x][y+1] == 0) table[x][y+1] = num+1
+                if (x-1>=0) if (mainTable.isEquals(x-1,y,0)) mainTable.setValue(x-1,y,num+1)
+                if (y-1>=0) if (mainTable.isEquals(x,y-1,0)) mainTable.setValue(x,y-1,num+1)
+                if (x+1<=TABLESIZE-1) if (mainTable.isEquals(x+1,y,0)) mainTable.setValue(x+1,y,num+1)
+                if (y+1<=TABLESIZE-1) if (mainTable.isEquals(x,y+1,0)) mainTable.setValue(x,y+1,num+1)
             }
         }
     }
@@ -324,16 +324,16 @@ class RandomBallsCreation{
         while(k < NEW_BALLS){ //NEW_BALLS = 3 by default
             val x = (0..TABLESIZE-1).random()
             val y = (0..TABLESIZE-1).random()
-            if (Table[x][y] == 0) {
-                Table[x][y] = threeBalls[k]
+            if (table.isEquals(x,y,0)) {
+                table.setValue(x,y, threeBalls[k])
                 val sum = BallsDestroying().checkLines(intArrayOf(x,y))
                 if (sum > 0) {
-                    Points().AddPoints(sum)
+                    Points().addPoints(sum)
                 }
                 var free = 0
                 for (i in 0..TABLESIZE-1)
                     for (j in 0..TABLESIZE-1)
-                        if (Table[i][j] == 0) free+=1
+                        if (table.isEquals(i,j,0)) free+=1
                 if (free !=0 ) k++ else break
             }
         }
@@ -342,7 +342,7 @@ class RandomBallsCreation{
 }
 
 class Points{
-    fun TableOfPoints(balls: Int): Int{
+    fun tableOfPoints(balls: Int): Int{
         when (balls){
             in 0..4 -> return 0
             5 -> return 10
@@ -378,12 +378,12 @@ class Points{
             else -> return 1_000_000
         }
     }
-    fun AddPoints(point: Int){
-        ScoreSTR = (ScoreSTR.toInt() + TableOfPoints(point)).toString()
-        if (HighScoreSTR.toInt() < ScoreSTR.toInt()) HighScoreSTR = ScoreSTR
+    fun addPoints(point: Int){
+        scoreSTR = (scoreSTR.toInt() + tableOfPoints(point)).toString()
+        if (highScoreSTR.toInt() < scoreSTR.toInt()) highScoreSTR = scoreSTR
     }
-    fun ClearPoints(){
-        ScoreSTR = "0"
+    fun clearPoints(){
+        scoreSTR = "0"
     }
 }
 
@@ -392,7 +392,7 @@ class BallsDestroying{
         var sum = 0
         val x = X[0]
         val y = X[1]
-        val color = Table[x][y]
+        val color = table.getValue(x,y)
         val destroyArr : Array<Array<Int>> = Array(4, { Array(3, {-1}) })
         destroyArr[0] = checkHoriz(x, color)
         destroyArr[1] = checkVert(y, color)
@@ -407,62 +407,62 @@ class BallsDestroying{
 
     //Block of checking in 4 directions
     fun checkHoriz(x: Int, c: Int): Array<Int>{//at the input, the coordinates of the cell from which the counting starts and its color; at the output, the coordinates of the beginning of the line and its length
-        var arr = Array(3){-1} //first - row number, second - column number, third - number of balls in the line
+        val arr = Array(3){-1} //first - row number, second - column number, third - number of balls in the line
         arr[2] = 0
-        for (k in 0..TABLESIZE-1) if (Table[x][k] == c) {
+        for (k in 0..TABLESIZE-1) if (table.isEquals(x,k,c)) {
             arr[2]++
             if (arr[1] == -1) arr[1] = k
         }
-        else if (arr[2]>= HOW_MANY_BALLS) break
+        else if (arr[2]>= MIN_BALLS_TO_DESTROY) break
         else {arr[2] = 0; arr[1] = -1}
 
-        if (arr[2] <HOW_MANY_BALLS) {arr[1] =-1; arr[2] = 0}
+        if (arr[2] <MIN_BALLS_TO_DESTROY) {arr[1] =-1; arr[2] = 0}
         if (arr[2] != 0) arr[0] = x
         return arr
     }
     fun checkVert(y: Int, c: Int): Array<Int>{
-        var arr = Array(3){-1} //first - row number, second - column number, third - number of balls in the line
+        val arr = Array(3){-1} //first - row number, second - column number, third - number of balls in the line
         arr[2] = 0
 
-        for (k in 0..TABLESIZE-1) if (Table[k][y] == c) {
+        for (k in 0..TABLESIZE-1) if (table.isEquals(k,y,c)) {
             arr[2]++
             if (arr[0] == -1) arr[0] = k
         }
-        else if (arr[2]>= HOW_MANY_BALLS) break
+        else if (arr[2]>= MIN_BALLS_TO_DESTROY) break
         else {arr[2] = 0; arr[0] = -1}
 
-        if (arr[2] <HOW_MANY_BALLS) {arr[0] =-1; arr[2] = 0}
+        if (arr[2] <MIN_BALLS_TO_DESTROY) {arr[0] =-1; arr[2] = 0}
         if (arr[2] != 0) arr[1] = y
         return arr
     }
     fun checkDiagOne(x: Int, y: Int, c: Int): Array<Int>{
-        var arr = Array<Int>(3){-1}
+        val arr = Array<Int>(3){-1}
         arr[2] = 0
         val dif = (y-x)
 
         for (k in 0..TABLESIZE-1){
             if ((k+dif <0)||(k+dif >TABLESIZE-1)) continue
-            if (Table[k][k+dif] == c) {arr[2]++; if (arr[0]==-1) arr[0] = k}
-            else if (arr[2]>=HOW_MANY_BALLS) break
+            if (table.isEquals(k, k+dif, c)) {arr[2]++; if (arr[0]==-1) arr[0] = k}
+            else if (arr[2]>=MIN_BALLS_TO_DESTROY) break
             else {arr[2]=0; arr[0] =-1}
         }
-        if (arr[2] <HOW_MANY_BALLS) {arr[0] = -1; arr[2] = 0}
+        if (arr[2] <MIN_BALLS_TO_DESTROY) {arr[0] = -1; arr[2] = 0}
         if (arr[2] != 0) arr[1] = arr[0]+dif
         return arr
     }
     fun checkDiagTwo(x: Int, y: Int, c: Int): Array<Int>{
-        var arr = Array<Int>(3){-1}
+        val arr = Array<Int>(3){-1}
         arr[2] = 0
         val dif = (x+y)
 
         for (k in 0..TABLESIZE-1){
             if ((dif-k >TABLESIZE-1)||(dif-k <0)) continue
-            if (Table[k][dif-k] == c) {arr[2]++; if (arr[0]==-1) arr[0] = k}
-            else if (arr[2]>=HOW_MANY_BALLS) break
+            if (table.isEquals(k,dif-k,c)) {arr[2]++; if (arr[0]==-1) arr[0] = k}
+            else if (arr[2]>=MIN_BALLS_TO_DESTROY) break
             else {arr[2]=0; arr[0] =-1
             }
         }
-        if (arr[2] <HOW_MANY_BALLS) {arr[0] = -1; arr[2] = 0}
+        if (arr[2] <MIN_BALLS_TO_DESTROY) {arr[0] = -1; arr[2] = 0}
         if (arr[2] != 0) arr[1] = dif-arr[0]
         return arr
     }
@@ -470,16 +470,16 @@ class BallsDestroying{
 
     fun destroyBalls(arr: Array<Array<Int>>){
         if (arr[0][2] != 0) {
-            for (k in arr[0][1]..arr[0][1]+arr[0][2]-1) Table[arr[0][0]][k] = 0
+            for (k in arr[0][1]..arr[0][1]+arr[0][2]-1) table.setValue(arr[0][0], k, 0)
         }
         if (arr[1][2] != 0) {
-            for (k in arr[1][0]..arr[1][0]+arr[1][2]-1) Table[k][arr[1][1]] = 0
+            for (k in arr[1][0]..arr[1][0]+arr[1][2]-1) table.setValue(k, arr[1][1], 0)
         }
         if (arr[2][2] != 0) {
-            for (k in 0..arr[2][2]-1) Table[k+arr[2][0]][k+arr[2][1]] = 0
+            for (k in 0..arr[2][2]-1) table.setValue(k+arr[2][0], k+arr[2][1], 0)
         }
         if (arr[3][2] != 0) {
-            for (k in 0..arr[3][2]-1) Table[arr[3][0]+k][arr[3][1]-k] = 0
+            for (k in 0..arr[3][2]-1) table.setValue(arr[3][0]+k, arr[3][1]-k, 0)
         }
     }
 }
