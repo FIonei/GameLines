@@ -21,7 +21,7 @@ var scoreSTR = "0"//current score
 var highScoreSTR = "0"//high score
 var threeBalls = Array(NEW_BALLS, {0})//colors of random balls under table
 var isFutureBalls = true //does buttonShow show random balls
-var table: Table = Table(TABLESIZE)//table of game field
+var table: Table = Table(TABLESIZE)//table of the game field
 
 class MainActivity : AppCompatActivity() {
     val colors = mapOf(
