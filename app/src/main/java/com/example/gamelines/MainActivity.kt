@@ -9,7 +9,7 @@ import android.view.View
 import android.view.View.*
 import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.*
-import com.example.gamelines.data.Table
+import com.example.gamelines.data.objects.Table
 import kotlinx.android.synthetic.main.activity_main.HighScore
 import kotlinx.android.synthetic.main.activity_main.Score
 
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
 
     fun startGame(view: View){
         RandomBallsCreation().randColor()
-        Points().clearPoints()
+        PointsConvertation().clearPoints()
         ChangingGameTable().clearTable()
         view.visibility = GONE
         Block.visibility = GONE
@@ -182,7 +182,7 @@ class MainActivity : AppCompatActivity() {
                     yellowType = 0
                     val sum = BallsDestroying().checkLines(findByIdString(image.getTag().toString()))
                     showTable()
-                    Points().addPoints(sum)
+                    PointsConvertation().addPoints(sum)
                     showPoints()
                     if (sum==0) game()
                 }
@@ -269,7 +269,8 @@ class ChangingGameTable{
     fun clearTable(){
         for (x in 0..TABLESIZE-1)
             for (y in 0..TABLESIZE-1)
-                table.setValue(x,y,0)}
+                table.setValue(x,y,0)
+    }
     fun paintEmpty(coords: IntArray, color: Int, selected: IntArray){//moving ball into empty cell
         table.setValue(selected[0], selected[1], color)
         table.setValue(coords[0], coords[1], 0)
@@ -305,7 +306,8 @@ class PathCalculation{
                     arr[n] = x
                     n++
                     arr[n] = y
-                    n++}
+                    n++
+                }
             for(i in 0..n-1 step 2) {
                 val x = arr[i]; val y = arr[i+1]
                 if (x-1>=0) if (mainTable.isEquals(x-1,y,0)) mainTable.setValue(x-1,y,num+1)
@@ -318,7 +320,6 @@ class PathCalculation{
 }
 
 class RandomBallsCreation{
-    fun randColor() {threeBalls = Array(3,{(1..NUMBER_OF_COLORS).random()})}
     fun randomCellBall(){
         var k = 0
         while(k < NEW_BALLS){ //NEW_BALLS = 3 by default
@@ -328,7 +329,7 @@ class RandomBallsCreation{
                 table.setValue(x,y, threeBalls[k])
                 val sum = BallsDestroying().checkLines(intArrayOf(x,y))
                 if (sum > 0) {
-                    Points().addPoints(sum)
+                    PointsConvertation().addPoints(sum)
                 }
                 var free = 0
                 for (i in 0..TABLESIZE-1)
@@ -339,9 +340,10 @@ class RandomBallsCreation{
         }
         randColor()
     }
+    fun randColor() {threeBalls = Array(3,{(1..NUMBER_OF_COLORS).random()})}
 }
 
-class Points{
+class PointsConvertation{
     fun tableOfPoints(balls: Int): Int{
         when (balls){
             in 0..4 -> return 0
