@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity"
+        tools:context=".PlayActivity"
         android:screenOrientation="portrait"
-        android:orientation="vertical"
->
+        android:orientation="vertical">
 
     <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:stretchColumns="0,1,2,3,4,5,6,7,8"
             android:gravity="center"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="16dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:id="@+id/tableLayout" android:clickable="false"
-    >
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/tableLayout"
+            android:clickable="false">
 
         <TableRow
                 android:background="#000000"
@@ -41,7 +42,8 @@
                     android:id="@+id/cell00"
                     android:onClick="yellowBack"
                     android:tag="00"
-                    android:background="#FFFFFF"/>
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -52,8 +54,8 @@
                     android:id="@+id/cell01"
                     android:onClick="yellowBack"
                     android:tag="01"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -64,8 +66,8 @@
                     android:id="@+id/cell02"
                     android:onClick="yellowBack"
                     android:tag="02"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -76,8 +78,8 @@
                     android:id="@+id/cell03"
                     android:onClick="yellowBack"
                     android:tag="03"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -88,8 +90,8 @@
                     android:id="@+id/cell04"
                     android:onClick="yellowBack"
                     android:tag="04"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -100,8 +102,8 @@
                     android:id="@+id/cell05"
                     android:onClick="yellowBack"
                     android:tag="05"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -112,8 +114,8 @@
                     android:id="@+id/cell06"
                     android:onClick="yellowBack"
                     android:tag="06"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -124,8 +126,8 @@
                     android:id="@+id/cell07"
                     android:onClick="yellowBack"
                     android:tag="07"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -136,9 +138,9 @@
                     android:id="@+id/cell08"
                     android:onClick="yellowBack"
                     android:tag="08"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
         </TableRow>
+
         <TableRow
                 android:background="#000000"
                 android:layout_width="wrap_content"
@@ -157,8 +159,8 @@
                     android:id="@+id/cell10"
                     android:onClick="yellowBack"
                     android:tag="10"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -169,8 +171,8 @@
                     android:id="@+id/cell11"
                     android:onClick="yellowBack"
                     android:tag="11"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -181,8 +183,8 @@
                     android:id="@+id/cell12"
                     android:onClick="yellowBack"
                     android:tag="12"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -193,8 +195,8 @@
                     android:id="@+id/cell13"
                     android:onClick="yellowBack"
                     android:tag="13"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -205,8 +207,8 @@
                     android:id="@+id/cell14"
                     android:onClick="yellowBack"
                     android:tag="14"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -217,8 +219,8 @@
                     android:id="@+id/cell15"
                     android:onClick="yellowBack"
                     android:tag="15"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -229,8 +231,8 @@
                     android:id="@+id/cell16"
                     android:onClick="yellowBack"
                     android:tag="16"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -241,8 +243,8 @@
                     android:id="@+id/cell17"
                     android:onClick="yellowBack"
                     android:tag="17"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -253,9 +255,9 @@
                     android:id="@+id/cell18"
                     android:onClick="yellowBack"
                     android:tag="18"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
         </TableRow>
+
         <TableRow
                 android:background="#000000"
                 android:layout_width="wrap_content"
@@ -274,8 +276,8 @@
                     android:id="@+id/cell20"
                     android:onClick="yellowBack"
                     android:tag="20"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -286,8 +288,8 @@
                     android:id="@+id/cell21"
                     android:onClick="yellowBack"
                     android:tag="21"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -298,8 +300,8 @@
                     android:id="@+id/cell22"
                     android:onClick="yellowBack"
                     android:tag="22"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -310,8 +312,8 @@
                     android:id="@+id/cell23"
                     android:onClick="yellowBack"
                     android:tag="23"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -322,8 +324,8 @@
                     android:id="@+id/cell24"
                     android:onClick="yellowBack"
                     android:tag="24"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -334,8 +336,8 @@
                     android:id="@+id/cell25"
                     android:onClick="yellowBack"
                     android:tag="25"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -346,8 +348,8 @@
                     android:id="@+id/cell26"
                     android:onClick="yellowBack"
                     android:tag="26"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -358,8 +360,8 @@
                     android:id="@+id/cell27"
                     android:onClick="yellowBack"
                     android:tag="27"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -370,9 +372,9 @@
                     android:id="@+id/cell28"
                     android:onClick="yellowBack"
                     android:tag="28"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
         </TableRow>
+
         <TableRow
                 android:background="#000000"
                 android:layout_width="wrap_content"
@@ -391,8 +393,8 @@
                     android:id="@+id/cell30"
                     android:onClick="yellowBack"
                     android:tag="30"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -403,8 +405,8 @@
                     android:id="@+id/cell31"
                     android:onClick="yellowBack"
                     android:tag="31"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -415,8 +417,8 @@
                     android:id="@+id/cell32"
                     android:onClick="yellowBack"
                     android:tag="32"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -427,8 +429,8 @@
                     android:id="@+id/cell33"
                     android:onClick="yellowBack"
                     android:tag="33"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -439,8 +441,8 @@
                     android:id="@+id/cell34"
                     android:onClick="yellowBack"
                     android:tag="34"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -451,8 +453,8 @@
                     android:id="@+id/cell35"
                     android:onClick="yellowBack"
                     android:tag="35"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -463,8 +465,8 @@
                     android:id="@+id/cell36"
                     android:onClick="yellowBack"
                     android:tag="36"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -475,8 +477,8 @@
                     android:id="@+id/cell37"
                     android:onClick="yellowBack"
                     android:tag="37"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -487,9 +489,9 @@
                     android:id="@+id/cell38"
                     android:onClick="yellowBack"
                     android:tag="38"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
         </TableRow>
+
         <TableRow
                 android:background="#000000"
                 android:layout_width="wrap_content"
@@ -508,8 +510,8 @@
                     android:id="@+id/cell40"
                     android:onClick="yellowBack"
                     android:tag="40"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -520,8 +522,8 @@
                     android:id="@+id/cell41"
                     android:onClick="yellowBack"
                     android:tag="41"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -532,8 +534,8 @@
                     android:id="@+id/cell42"
                     android:onClick="yellowBack"
                     android:tag="42"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -544,8 +546,8 @@
                     android:id="@+id/cell43"
                     android:onClick="yellowBack"
                     android:tag="43"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -556,8 +558,8 @@
                     android:id="@+id/cell44"
                     android:onClick="yellowBack"
                     android:tag="44"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -568,8 +570,8 @@
                     android:id="@+id/cell45"
                     android:onClick="yellowBack"
                     android:tag="45"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -580,8 +582,8 @@
                     android:id="@+id/cell46"
                     android:onClick="yellowBack"
                     android:tag="46"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -592,8 +594,8 @@
                     android:id="@+id/cell47"
                     android:onClick="yellowBack"
                     android:tag="47"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -604,9 +606,9 @@
                     android:id="@+id/cell48"
                     android:onClick="yellowBack"
                     android:tag="48"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
         </TableRow>
+
         <TableRow
                 android:background="#000000"
                 android:layout_width="wrap_content"
@@ -625,8 +627,8 @@
                     android:id="@+id/cell50"
                     android:onClick="yellowBack"
                     android:tag="50"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -637,8 +639,8 @@
                     android:id="@+id/cell51"
                     android:onClick="yellowBack"
                     android:tag="51"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -649,8 +651,8 @@
                     android:id="@+id/cell52"
                     android:onClick="yellowBack"
                     android:tag="52"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -661,8 +663,8 @@
                     android:id="@+id/cell53"
                     android:onClick="yellowBack"
                     android:tag="53"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -673,8 +675,8 @@
                     android:id="@+id/cell54"
                     android:onClick="yellowBack"
                     android:tag="54"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -685,8 +687,8 @@
                     android:id="@+id/cell55"
                     android:onClick="yellowBack"
                     android:tag="55"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -697,8 +699,8 @@
                     android:id="@+id/cell56"
                     android:onClick="yellowBack"
                     android:tag="56"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -709,8 +711,8 @@
                     android:id="@+id/cell57"
                     android:onClick="yellowBack"
                     android:tag="57"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -721,9 +723,9 @@
                     android:id="@+id/cell58"
                     android:onClick="yellowBack"
                     android:tag="58"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
         </TableRow>
+
         <TableRow
                 android:background="#000000"
                 android:layout_width="wrap_content"
@@ -742,8 +744,8 @@
                     android:id="@+id/cell60"
                     android:onClick="yellowBack"
                     android:tag="60"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -754,8 +756,8 @@
                     android:id="@+id/cell61"
                     android:onClick="yellowBack"
                     android:tag="61"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -766,8 +768,8 @@
                     android:id="@+id/cell62"
                     android:onClick="yellowBack"
                     android:tag="62"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -778,8 +780,8 @@
                     android:id="@+id/cell63"
                     android:onClick="yellowBack"
                     android:tag="63"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -790,8 +792,8 @@
                     android:id="@+id/cell64"
                     android:onClick="yellowBack"
                     android:tag="64"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -802,8 +804,8 @@
                     android:id="@+id/cell65"
                     android:onClick="yellowBack"
                     android:tag="65"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -814,8 +816,8 @@
                     android:id="@+id/cell66"
                     android:onClick="yellowBack"
                     android:tag="66"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -826,8 +828,8 @@
                     android:id="@+id/cell67"
                     android:onClick="yellowBack"
                     android:tag="67"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -838,9 +840,9 @@
                     android:id="@+id/cell68"
                     android:onClick="yellowBack"
                     android:tag="68"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
         </TableRow>
+
         <TableRow
                 android:background="#000000"
                 android:layout_width="wrap_content"
@@ -859,8 +861,8 @@
                     android:id="@+id/cell70"
                     android:onClick="yellowBack"
                     android:tag="70"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -871,8 +873,8 @@
                     android:id="@+id/cell71"
                     android:onClick="yellowBack"
                     android:tag="71"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -883,8 +885,8 @@
                     android:id="@+id/cell72"
                     android:onClick="yellowBack"
                     android:tag="72"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -895,8 +897,8 @@
                     android:id="@+id/cell73"
                     android:onClick="yellowBack"
                     android:tag="73"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -907,8 +909,8 @@
                     android:id="@+id/cell74"
                     android:onClick="yellowBack"
                     android:tag="74"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -919,8 +921,8 @@
                     android:id="@+id/cell75"
                     android:onClick="yellowBack"
                     android:tag="75"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -931,8 +933,8 @@
                     android:id="@+id/cell76"
                     android:onClick="yellowBack"
                     android:tag="76"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -943,8 +945,8 @@
                     android:id="@+id/cell77"
                     android:onClick="yellowBack"
                     android:tag="77"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -955,9 +957,9 @@
                     android:id="@+id/cell78"
                     android:onClick="yellowBack"
                     android:tag="78"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
         </TableRow>
+
         <TableRow
                 android:background="#000000"
                 android:layout_width="wrap_content"
@@ -976,8 +978,8 @@
                     android:id="@+id/cell80"
                     android:onClick="yellowBack"
                     android:tag="80"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -988,8 +990,8 @@
                     android:id="@+id/cell81"
                     android:onClick="yellowBack"
                     android:tag="81"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -1000,8 +1002,8 @@
                     android:id="@+id/cell82"
                     android:onClick="yellowBack"
                     android:tag="82"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -1012,8 +1014,8 @@
                     android:id="@+id/cell83"
                     android:onClick="yellowBack"
                     android:tag="83"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -1024,8 +1026,8 @@
                     android:id="@+id/cell84"
                     android:onClick="yellowBack"
                     android:tag="84"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -1036,8 +1038,8 @@
                     android:id="@+id/cell85"
                     android:onClick="yellowBack"
                     android:tag="85"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -1048,8 +1050,8 @@
                     android:id="@+id/cell86"
                     android:onClick="yellowBack"
                     android:tag="86"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -1060,8 +1062,8 @@
                     android:id="@+id/cell87"
                     android:onClick="yellowBack"
                     android:tag="87"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
+
             <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
@@ -1072,11 +1074,11 @@
                     android:id="@+id/cell88"
                     android:onClick="yellowBack"
                     android:tag="88"
-                    android:background="#FFFFFF"
-            />
+                    android:background="#FFFFFF" />
         </TableRow>
 
     </TableLayout>
+
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -1084,50 +1086,68 @@
             app:layout_constraintBottom_toBottomOf="@+id/tableLayout"
             app:layout_constraintEnd_toEndOf="@+id/tableLayout"
             app:layout_constraintStart_toStartOf="@+id/tableLayout"
-            app:layout_constraintTop_toTopOf="@+id/tableLayout" android:clickable="true"
+            app:layout_constraintTop_toTopOf="@+id/tableLayout"
+            android:clickable="true"
             android:visibility="gone"
-            android:background="#FFFFFF"/>
+            android:background="#FFFFFF" />
+
     <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:id="@+id/bubble1" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/textNext" app:layout_constraintStart_toStartOf="@+id/textNext"
-            android:visibility="visible"/>
+            android:id="@+id/bubble1"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textNext"
+            app:layout_constraintStart_toStartOf="@+id/textNext"
+            android:visibility="visible" />
+
     <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/bubble2"
-            app:layout_constraintStart_toEndOf="@+id/bubble1" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/bubble1"
+            android:layout_marginStart="8dp"
             app:layout_constraintTop_toTopOf="@+id/bubble1"
-            android:visibility="visible"/>
+            android:visibility="visible" />
+
     <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/bubble3"
-            app:layout_constraintTop_toTopOf="@+id/bubble2" app:layout_constraintStart_toEndOf="@+id/bubble2"
-            android:layout_marginStart="8dp" android:visibility="visible"/>
+            app:layout_constraintTop_toTopOf="@+id/bubble2"
+            app:layout_constraintStart_toEndOf="@+id/bubble2"
+            android:layout_marginStart="8dp"
+            android:visibility="visible" />
+
     <TextView
             android:text="Текущий счёт:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView" app:layout_constraintStart_toStartOf="@+id/tableLayout"
+            android:id="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/tableLayout"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/tableLayout"/>
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
     <TextView
             android:text="0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/Score"
-            app:layout_constraintTop_toBottomOf="@+id/textView" app:layout_constraintStart_toStartOf="@+id/textView"
-            android:layout_marginStart="40dp" android:textAlignment="center"/>
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            android:layout_marginStart="40dp"
+            android:textAlignment="center" />
+
     <TextView
             android:text="Лучший результат:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView2" android:layout_marginTop="16dp"
+            android:id="@+id/textView2"
+            android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/tableLayout"
             android:textAlignment="textEnd"
-            app:layout_constraintEnd_toEndOf="@+id/tableLayout"/>
+            app:layout_constraintEnd_toEndOf="@+id/tableLayout" />
+
     <TextView
             android:text="5"
             android:layout_width="wrap_content"
@@ -1135,123 +1155,51 @@
             android:id="@+id/HighScore"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
             app:layout_constraintEnd_toEndOf="@+id/textView2"
-            android:textAlignment="center" android:layout_marginEnd="56dp"/>
+            android:textAlignment="center"
+            android:layout_marginEnd="56dp" />
+
     <TextView
             android:text="Следующие шары:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textNext"
             app:layout_constraintTop_toBottomOf="@+id/Score"
-            android:layout_marginTop="32dp" android:textAlignment="viewStart"
+            android:layout_marginTop="32dp"
+            android:textAlignment="viewStart"
             android:visibility="visible"
-            app:layout_constraintStart_toStartOf="@+id/textView"/>
+            app:layout_constraintStart_toStartOf="@+id/textView" />
+
     <Button
             android:text="Скрыть будущиe шарики"
             android:layout_width="169dp"
             android:layout_height="wrap_content"
-            android:id="@+id/buttonShow" android:lineSpacingExtra="4sp"
+            android:id="@+id/buttonShow"
+            android:lineSpacingExtra="4sp"
             android:textAlignment="center"
             android:onClick="showBubbles"
-            android:autoSizeMaxTextSize="100sp" android:autoSizeMinTextSize="2sp"
-            android:autoSizeStepGranularity="2sp" android:autoSizeTextType="uniform"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="@+id/textNext"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="@+id/bubble3"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="2sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="@+id/textNext"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/bubble3"
             app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintEnd_toEndOf="@+id/tableLayout" app:layout_constraintStart_toEndOf="@+id/bubble3"
-    />
-    <Button
-            android:text="Повернуть экран"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button3" android:onClick="rotate"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/buttonShow" app:layout_constraintVertical_bias="0.48000002"/>
+            app:layout_constraintEnd_toEndOf="@+id/tableLayout"
+            app:layout_constraintStart_toEndOf="@+id/bubble3" />
+
     <Button
             android:text="Начать&#10;игру"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/buttonStart" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/tableLayout" app:layout_constraintStart_toEndOf="@+id/textView"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toStartOf="@+id/textView2"
-            android:layout_marginEnd="8dp" android:onClick="startGame"/>
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="@+id/tableLayout" app:layout_constraintEnd_toEndOf="@+id/tableLayout"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/button3" android:background="#FFFFFF"
-            android:id="@+id/Prize" android:visibility="invisible"
-            app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-                android:text="Ваш результат:"
-                android:layout_width="145dp"
-                android:layout_height="46dp" android:id="@+id/Yours"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:textAlignment="center"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="200dp"
-                app:layout_constraintTop_toTopOf="parent"/>
-        <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/TotalScore"
-                app:layout_constraintTop_toBottomOf="@+id/Yours"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp" android:textAlignment="center"/>
-        <TextView
-                android:text="Лучший результат:"
-                android:layout_width="147dp"
-                android:layout_height="45dp" android:id="@+id/Best"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.486" android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/TotalScore" android:textAlignment="center"/>
-        <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/TotalBestScore"
-                app:layout_constraintTop_toBottomOf="@+id/Best" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"
-                android:textAlignment="center"/>
-        <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textShortMessage|text"
-                android:ems="10"
-                android:id="@+id/Nickname"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/TotalBestScore"
-                android:hint="nickname" android:textAlignment="center"/>
-        <Button
-                android:text="Опубликовать"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ButtonPublic" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="32dp" android:layout_marginTop="32dp"
-                app:layout_constraintTop_toBottomOf="@+id/Nickname" android:onClick="publish"/>
-        <Button
-                android:text="Начать заново"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ButtonRestart" app:layout_constraintStart_toEndOf="@+id/ButtonPublic"
-                android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="32dp"
-                app:layout_constraintTop_toBottomOf="@+id/Nickname" app:layout_constraintHorizontal_bias="1.0"
-                android:layout_marginEnd="32dp" android:onClick="startGame"/>
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/Block2" app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:background="#00FDFCFC" android:backgroundTint="#00FFFDFD"
-                android:foreground="@drawable/empty"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:id="@+id/buttonStart"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/textView2"
+            android:layout_marginEnd="8dp"
+            android:onClick="startGame" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
