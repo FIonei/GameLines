@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_controller"
+        app:startDestination="@id/optionsScreen">
+
+    <fragment
+            android:id="@+id/optionsScreen"
+            android:name="com.example.gamelines.presentation.optionsScreen.OptionsScreen"
+            android:label="options_screen_fragment"
+            tools:layout="@layout/options_screen_fragment" >
+        <action
+                android:id="@+id/action_optionsScreen_to_gameScreen"
+                app:destination="@id/gameScreen" />
+    </fragment>
+    <fragment
+            android:id="@+id/gameScreen"
+            android:name="com.example.gamelines.presentation.gameScreen.GameScreen"
+            android:label="game_screen_fragment"
+            tools:layout="@layout/game_screen_fragment" >
+        <action
+                android:id="@+id/action_gameScreen_to_endScreen"
+                app:destination="@id/endScreen" />
+    </fragment>
+    <fragment
+            android:id="@+id/endScreen"
+            android:name="com.example.gamelines.presentation.endScreen.EndScreen"
+            android:label="end_screen_fragment"
+            tools:layout="@layout/end_screen_fragment" />
+</navigation>

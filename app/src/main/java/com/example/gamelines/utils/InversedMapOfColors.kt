@@ -1,4 +1,4 @@
-package com.example.gamelines.data
+package com.example.gamelines.utils
 
 import android.content.Context
 import android.graphics.drawable.Drawable

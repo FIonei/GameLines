@@ -1,4 +1,4 @@
-package com.example.gamelines
+package com.example.gamelines.presentation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +7,10 @@ import android.os.CountDownTimer
 import android.view.View
 import android.view.View.*
 import android.widget.*
-import com.example.gamelines.data.InversedMapOfColors
-import com.example.gamelines.data.MapOfColors
-import com.example.gamelines.data.objects.Table
+import com.example.gamelines.R
+import com.example.gamelines.utils.InversedMapOfColors
+import com.example.gamelines.utils.MapOfColors
+import com.example.gamelines.domain.objects.Table
 import com.example.gamelines.databinding.ActivityMainBinding
 
 const val NEW_BALLS = 3 //how many new balls will appear
@@ -18,9 +19,9 @@ val TABLESIZE = 9//size of game field
 val NUMBER_OF_COLORS = 7 //how many colors of balls available
 var scoreSTR = "0"//current score
 var highScoreSTR = "0"//high score
-var threeBalls = Array(NEW_BALLS, { 0 })//colors of random balls under table
+var threeBalls = Array(NEW_BALLS) { 0 }//colors of random balls under table
 var isFutureBalls = true //does buttonShow show random balls
-var table: Table = Table(TABLESIZE)//table of the game field
+var table: Table = Table()//table of the game field
 
 class PlayActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -146,9 +147,9 @@ class PlayActivity : AppCompatActivity() {
     }
 
     fun drawRand() {
-        binding.bubble1.setImageDrawable(MapOfColors().getColor(applicationContext,threeBalls[0]))
-        binding.bubble2.setImageDrawable(MapOfColors().getColor(applicationContext,threeBalls[1]))
-        binding.bubble3.setImageDrawable(MapOfColors().getColor(applicationContext,threeBalls[2]))
+        binding.bubble1.setImageDrawable(MapOfColors().getColor(applicationContext, threeBalls[0]))
+        binding.bubble2.setImageDrawable(MapOfColors().getColor(applicationContext, threeBalls[1]))
+        binding.bubble3.setImageDrawable(MapOfColors().getColor(applicationContext, threeBalls[2]))
     }
 
     //Block of selection current ball and for his moving
@@ -325,7 +326,7 @@ class PathCalculation {
         yellowCoords: IntArray,
         coords: IntArray
     ): Boolean { //checking that the ball can move from the starting position to the selected empty cell
-        val pathTable = Table(TABLESIZE)
+        val pathTable = Table()
         for (x in 0..TABLESIZE - 1)
             for (y in 0..TABLESIZE - 1) {
                 if ((table.isEquals(x, y, 0)).not()) pathTable.setValue(x, y, -1)

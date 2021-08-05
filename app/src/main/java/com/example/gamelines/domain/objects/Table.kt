@@ -1,7 +1,7 @@
-package com.example.gamelines.data.objects
+package com.example.gamelines.domain.objects
 
-class Table(_tableSize: Int) {
-    val tableSize = _tableSize
+class Table() {
+    var tableSize: Int = 0
     var cells = Array(tableSize, {Array(tableSize, {0})})
 
     fun setValue(x: Int, y: Int, value: Int) {cells[x][y] = value}

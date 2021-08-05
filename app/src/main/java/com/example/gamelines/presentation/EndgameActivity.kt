@@ -1,8 +1,8 @@
-package com.example.gamelines
+package com.example.gamelines.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import com.example.gamelines.R
 import com.example.gamelines.databinding.ActivityEndgameBinding
 
 class EndgameActivity : AppCompatActivity() {
